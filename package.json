@@ -1,0 +1,27 @@
+{
+  "name": "minimal-connect-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "generate": "npx buf generate protos && npx buf build -o gen/reflection.bin --as-file-descriptor-set",
+    "setup": "npm install && npm run generate",
+    "dev": "nodemon --ignore 'gen/' --exec 'npm run generate && ts-node-esm server.ts'"
+  },
+  "keywords": [],
+  "author": "",
+  "type": "module",
+  "dependencies": {
+    "@bufbuild/buf": "^1.30.1",
+    "@bufbuild/protobuf": "^1.8.0",
+    "@bufbuild/protoc-gen-es": "^1.8.0",
+    "@connectrpc/connect": "^1.4.0",
+    "@connectrpc/connect-node": "^1.4.0",
+    "@connectrpc/protoc-gen-connect-es": "^1.4.0",
+    "connect-grpcreflect-es": "github:protoflow-labs/connect-grpcreflect-es#main"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22",
+    "ts-node": "^10.9.2"
+  }
+}
